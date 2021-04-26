@@ -58,8 +58,8 @@
                               (translate [(+ (/ 1.5 2) (/ alps-notch-width 2))
                                           0
                                           (- plate-thickness
-                                             (/ alps-notch-height 2))]))
-                         )
+                                             (/ alps-notch-height 2))])))
+                         
         plate-half (union top-wall left-wall)]
     (union plate-half
            (->> plate-half
@@ -287,9 +287,9 @@
                                       (color [1 0 0 1/2]))
                                  (->> (cube 16 3.5 web-thickness)
                                       (translate [0.5 12 (- plate-thickness (/ web-thickness 2) 1.4)])
-                                      (color [1 0 0 1/2])))
+                                      (color [1 0 0 1/2])))]
         ;;top-plate (difference top-plate stabilizer-cutout)
-        ]
+        
     (color [1 0 0] (union top-plate (mirror [0 1 0] top-plate)))))
 
 (defn extended-plate-height [size] (/ (- (* (+ 1 sa-length) size) mount-height) 2))
@@ -299,8 +299,8 @@
         top-plate (->> (cube mount-width plate-height web-thickness)
                        (translate [0 (/ (+ plate-height mount-height) 2)
                                    (- plate-thickness (/ web-thickness 2))]))]
-    (color [0 1 1] (union top-plate (mirror [0 1 0] top-plate)))
-    ))
+    (color [0 1 1] (union top-plate (mirror [0 1 0] top-plate)))))
+    
 
 (defn thumb-layout [shape]
   (union
@@ -310,8 +310,8 @@
    (thumb-place 1 -5/8 (union shape (extended-plates 1.75)))
 
    (thumb-place 2 -3/4 (union shape (extended-plates 1.5)))
-   (thumb-place 2 3/4 (union shape (extended-plates 1.5)))
-   ))
+   (thumb-place 2 3/4 (union shape (extended-plates 1.5)))))
+   
 
 (defn thumb-layout-bottom [shape]
   (union
@@ -321,8 +321,8 @@
    (thumb-place 1 -5/8 shape)
 
    (thumb-place 2 -3/4 shape)
-   (thumb-place 2 3/4 shape)
-   ))
+   (thumb-place 2 3/4 shape)))
+   
 
 (def thumbcaps
   (union
@@ -386,8 +386,8 @@
                       (thumb-place 2 3/4 (thumb-br 1.5))
                       (thumb-place 1 7/8 (thumb-bl 1.25))
                       (thumb-place 2 3/4 (thumb-tr 1.5))
-                      (thumb-place 1 7/8 (thumb-tl 1.25))
-                      )
+                      (thumb-place 1 7/8 (thumb-tl 1.25)))
+                      
 
 
       ;;Connecting the thumb to everything
@@ -407,8 +407,8 @@
                       (key-place 0 3 web-post-bl)
                       (key-place 0 3 web-post-tl)
                       (thumb-place 1 7/8 (thumb-br 1.25))
-                      (thumb-place 1 7/8 (thumb-tr 1.25))
-                      )))))
+                      (thumb-place 1 7/8 (thumb-tr 1.25)))))))
+                      
 
 (def thumb
 
@@ -884,12 +884,12 @@
                      [(union
                        (hull (case-place right-wall-column (first rows) (translate [-1 0 1] (wall-sphere-bottom 1/2)))
                              (case-place right-wall-column back-y (translate [-1 -1 1] (wall-sphere-bottom 1)))
-                             (key-place 5 (first rows) web-post-tr)
-                             )
+                             (key-place 5 (first rows) web-post-tr))
+                             
                        (hull (case-place right-wall-column 4 (translate [-1 0 1] (wall-sphere-bottom 1/2)))
                              (case-place right-wall-column 4 (translate [0 1 1] (wall-sphere-bottom 0)))
-                             (key-place 5 4 half-post-br)
-                             )
+                             (key-place 5 4 half-post-br))
+                             
                        (hull (case-place right-wall-column 4 (translate [-1 0 1] (wall-sphere-bottom 1/2)))
                              (key-place 5 4 half-post-br)
                              (key-place 5 4 web-post-tr)))])
@@ -931,8 +931,8 @@
             (thumb-place 1 -5/8 shape)
 
             (thumb-place 2 -3/4 shape)
-            (thumb-place 2 3/4 shape)
-            )
+            (thumb-place 2 3/4 shape))
+            
 
 
          thumb-tl #(->> web-post-tl
@@ -963,8 +963,8 @@
                                  (thumb-place 2 -3/4 web-post-tr)
                                  (thumb-place 1 -5/8 web-post-tl)
                                  (thumb-place 2 -3/4 web-post-br)
-                                 (thumb-place 1 -5/8 web-post-bl)
-                                 )]
+                                 (thumb-place 1 -5/8 web-post-bl))]
+                                 
          thumb-back-wall [(hull
                            (thumb-place 1/2 thumb-back-y (translate [0 -1 1] wall-sphere-bottom-back))
                            (thumb-place 1 7/8 web-post-tr)
@@ -986,8 +986,8 @@
                            (thumb-place 1/2 thumb-back-y (translate [0 -1 1] wall-sphere-bottom-back))
                            (case-place left-wall-column 1.6666 (translate [1 0 1] wall-sphere-bottom-front))
                            (key-place 0 3 web-post-tl)
-                           (thumb-place 1 7/8 web-post-tr))
-                          ]
+                           (thumb-place 1 7/8 web-post-tr))]
+                          
          thumb-left-wall [(hull
                            (thumb-place thumb-left-wall-column thumb-back-y (translate [1 -1 1] wall-sphere-bottom-back))
                            (thumb-place thumb-left-wall-column 0 (translate [1 0 1] wall-sphere-bottom-back))
@@ -1056,34 +1056,34 @@
                        (hull
                         (thumb-place 0 -1/2 web-post-br)
                         (thumb-place thumb-right-wall thumb-front-row (translate [-1 1 1] wall-sphere-bottom-front))
-                        (key-place 1 4 half-post-bl)
-                        )
+                        (key-place 1 4 half-post-bl))
+                        
 
                        (hull
                         (thumb-place thumb-right-wall thumb-front-row (translate [-1 1 1] wall-sphere-bottom-front))
                         (case-place 0.7 4 (translate [0 1 1] wall-sphere-bottom-front))
                         (thumb-place 0 -1/2 web-post-br)
-                        (thumb-place 0 -1/2 web-post-tr)
-                        )
+                        (thumb-place 0 -1/2 web-post-tr))
+                        
 
                        #_                       (hull
                                                  (case-place 0.7 4 (translate [0 1 1] wall-sphere-bottom-front))
                                                  (thumb-place 0 -1/2 web-post-br)
-                                                 (thumb-place 0 -1/2 web-post-tr)
+                                                 (thumb-place 0 -1/2 web-post-tr))
 
-                                                 )
+                                                 
 
 
                        #_                     (hull
                                                (thumb-place 0 -1 web-post-br)
                                                (thumb-place 0 -1/2 web-post-br)
                                                (thumb-place thumb-right-wall thumb-front-row (translate [-1 1 1] wall-sphere-bottom-front))
-                                               (key-place 1 4 half-post-bl)
-                                               )
+                                               (key-place 1 4 half-post-bl))]
+                                               
 
 
 
-                       ]
+                       
          stands (let [bumper-diameter 9.6
                       bumper-radius (/ bumper-diameter 2)
                       stand-diameter (+ bumper-diameter 2)
@@ -1204,7 +1204,7 @@
        (with-fn 50)
        (key-place 1/2 0)))
 
-(def trrs-box-hole (->> (cube 14 14 7 )
+(def trrs-box-hole (->> (cube 14 14 7)
                         (translate [0 1 -3.5])))
 
 
@@ -1234,8 +1234,8 @@
                (color [0 0 1]))
           (->> (cube 3 3 (+ teensy-pcb-thickness 3))
                (translate [0 (/ 30.5 -2) (+ (- teensy-offset-height)
-                                            #_(/ (+ teensy-pcb-thickness 3) -2)
-                                            )])
+                                            #_(/ (+ teensy-pcb-thickness 3) -2))])
+                                            
                (key-place 1/2 3/2)
                (color [0 0 1]))))
    teensy-pcb
