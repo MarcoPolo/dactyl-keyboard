@@ -1180,7 +1180,7 @@
 (def io-exp-length 36)
 
 (def teensy-width 20)
-(def teensy-height 12)
+(def teensy-height 18)
 (def teensy-length 33)
 
 (def io-exp-cover (circuit-cover io-exp-width io-exp-length io-exp-height))
@@ -1245,9 +1245,9 @@
         (color [1 0 0]))))
 
 (def usb-cutout
-  (let [hole-height 6.2
+  (let [hole-height 10.0
         side-radius (/ hole-height 2)
-        hole-width 10.75
+        hole-width 15.00
         side-cylinder (->> (cylinder side-radius teensy-length)
                            (with-fn 20)
                            (translate [(/ (- hole-width hole-height) 2) 0 0]))]
@@ -1271,7 +1271,7 @@
           new-case
           teensy-support
           #_caps)
-   trrs-hole-just-circle
+   #_trrs-hole-just-circle
    screw-holes))
 
 (def dactyl-bottom-right
@@ -1283,7 +1283,7 @@
      (hull teensy-cover)
      new-case
      teensy-cover
-     trrs-cutout
+     #_trrs-cutout
      (->> (cube 1000 1000 10) (translate [0 0 -5]))
      screw-holes))
    usb-cutout
@@ -1311,15 +1311,16 @@
                   connectors
                   thumb
                   new-case)
-           trrs-hole-just-circle
+           #_trrs-hole-just-circle
            screw-holes)))
+
+
+;; (spit "things/lightcycle-cherry-bottom-right.scad"
+;;       (write-scad dactyl-bottom-right))
 
 (comment
   (spit "things/lightcycle-cherry-top-right.scad"
         (write-scad dactyl-top-right))
-
-  (spit "things/lightcycle-cherry-bottom-right.scad"
-        (write-scad dactyl-bottom-right))
 
   (spit "things/lightcycle-cherry-top-left.scad"
         (write-scad dactyl-top-left))
